@@ -25,7 +25,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 	# Mis gemas
 
 		gem 'devise'
-		gem 'rails_12factor', group: :production  
 		
 	# end
 # Use ActiveModel has_secure_password
