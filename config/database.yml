@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: elproveedor_development
+  pool: 5
+  username: postgres
+  password: 15987532
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: elproveedor_development
+  pool: 5
+  username: postgres
+  password: 15987532
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: elproveedor_production
+  pool: 5
+  username: postgres
+  password: 15987532

@@ -1,0 +1,113 @@
+form{
+  display: flex;
+  justify-content: center;
+}
+.new_session form{
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+}
+.signup{
+  height: 100%;
+  box-sizing: border-box;
+  padding: 20px 0px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.signup h2{
+  color: #3C566B;
+}
+.signup .new_user{
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0px;
+}
+.forminput{
+  display: flex;
+}
+.signboard .new_user{
+	display: flex;
+	align-items: center;
+}
+.field{
+	margin: 20px;
+  display: flex;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.field input::-webkit-input-placeholder{
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.field input {
+  width: 220px;
+  display: block;
+  border: none;
+  padding: 10px 0;
+  border-bottom: solid 1px #1E88E5;
+  -webkit-transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+  transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 96%, #1E88E5 4%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #1E88E5 4%);
+  background-position: -220px 0;
+  background-size: 220px 100%;
+  background-repeat: no-repeat;
+  color: #0e6252;
+}
+.field input:focus, .field input:valid {
+  box-shadow: none;
+  outline: none;
+  background-position: 0 0;
+}
+.field input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
+  color: #1E88E5;
+  font-size: 11px;
+  -webkit-transform: translateY(-20px);
+          transform: translateY(-20px);
+  visibility: visible !important;
+}
+.entrar{
+	background-color: #7CB342;
+	color: white;
+}
+.entrar:hover{
+  background-color: #89B160;
+}
+.identificacion input{
+  width: 145px;
+}
+select{
+  margin-right: 5px;
+  border-color: #1E88E5;
+  color: #0e6252;
+  outline: none;
+  cursor: pointer;
+  width: 70px;
+  height: 37px;
+}
+.ubicacion{
+  justify-content: center;
+}
+.ubicacion select{
+  width: 50%;
+  border-color: #B5B5B5;
+  color: #B5B5B5;
+  background-color: #EEE;
+}
+.signup .actions input{
+  background-color: #1E88E5;
+  color: white;
+  font-size: 17px;
+}
+.signup .actions input:hover{
+  background-color: #429AE6;
+}

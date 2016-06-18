@@ -1,0 +1,51 @@
+<%= render 'layouts/navigation' %>
+<section class="section-products">
+	<div class="busqueda" id="busqueda">
+		<div class="menu">
+			<button id="filtro"><span class="icon-menu"></span></button>
+		</div>
+		<div class="search">
+
+			<form class="form-buscar" action="/products" accept-charset="UTF-8" method="get">
+		      <input name="utf8" type="hidden" value="✓">
+		      <input type="text" name="ask" id="ask" value="" class="text-buscar" >
+		      <button type="submit" class="btn-buscar-producto">Buscar</button>
+		    </form>
+
+		</div>
+	</div>
+	<div class="products">
+		<div class="filtros blank" style="position: relative;" id="blank">
+		</div>
+		<div class="filtros" id="filtros">
+			<%= render "filters" %>
+		</div>
+		<div class="productos">
+			    <% @products.each do |product| %>
+			    <div class="product">
+			    	<div class="foto-producto">
+			    		<img src="http://empresacolombinanathalia.weebly.com/uploads/2/8/1/4/28148007/s599866822382417415_p11_i1_w322.jpeg">
+			    	</div>
+			    	<div class="action-producto">
+			    		<div class="inf-producto">
+			    			<h2><%= product.nombre %></h2>
+			    			<p><%= product.marca %></p>
+			    			<h4><%= number_to_currency(product.precio, :unit => '$' ) %></h4>
+			    		</div>
+			    		<div class="pedir">
+		                  <%= form_tag({controller: "pages", action: "index"}, :method => "get", :class => 'form-pedido') do %>
+			                  <%= hidden_field_tag( :id , product.id ) %>
+			                  <%= number_field_tag :cant, :cantidad, class: "cantidad-producto", :placeholder => "und", :required => true, in: 1...100 %>
+			                  <input type="submit" value="Comprar" class="btn-pedido"></input>
+		                  <% end %>
+			    		</div>
+			    		<div style="display: none">
+			    			<%= link_to 'Edit', edit_product_path(product) %>
+			        		<%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+			    		</div>
+			    	</div>
+			    </div>
+			    <% end %>
+		</div>
+	</div>
+</section>

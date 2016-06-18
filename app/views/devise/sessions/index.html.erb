@@ -1,0 +1,37 @@
+<header class="indexheader"> <!-- Cabezera del Homepage -->
+  <figure>
+    <h2>EL PROVEEDOR</h2>
+  </figure>
+  <nav class="navigation">
+    <ul>
+      <li class="ingresar">
+        <a href="#" id="user_session">Ingresar Usuario</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+<div class="signboard" id="signboard" style="display: none;"> <!--Botones para ingresar a la aplicacion-->
+
+  <div class="reguistro">
+    <%= link_to "Registrate", new_user_registration_path ,class: 'reguistrate btn' %>
+    <em>Disfruta de los mejores precios y la mejor calidad</em>
+  </div>
+  <div>
+    <%= render 'form'%>
+  </div>
+  <div class="figure" style="display: none;">
+    <figure>
+      <h2>EL PROVEEDOR</h2>
+    </figure>
+  </div>
+
+</div>
+
+
+<section class="indexsection"> <!-- Introducion del Homepage -->
+  <h1>EL PROVEEDOR</h1>
+  <h4>Merca tu negocio, con los mejores precios</h4>
+  <%= link_to 'COMPRAR AHORA', products_path ,class: 'btn' %>
+</section>

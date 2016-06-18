@@ -1,0 +1,67 @@
+<section class="signup">
+  <h2>REGUISTRATE</h2>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+
+  <div class="forminput">
+    <div>
+      
+      <div class="field">
+        <%= f.text_field :nombre, autocomplete: "off", placeholder: "Nombre Y Apellido", required: "" %>
+      </div>
+
+      <div class="field identificacion">
+        <%= f.select(:tipoidentificacion, options_for_select([['Cedula', 'cedula'], ['NIT', 'nit'], ['Pasaporte', 'pasaporte'], ['T.I', 't.identidad']])) %>
+        <%= f.number_field :numeroidentificacion, autocomplete: "off", placeholder: "Numero Identificacion", required: "" %>
+      </div>
+
+      <div class="field">
+        <%= f.number_field :telefono, autocomplete: "off", placeholder: "Telefono", required: "" %>
+      </div>
+
+      <div class="field">
+        <%= f.number_field :celular, autocomplete: "off", placeholder: "Celular", required: "" %>
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password, autocomplete: "off", placeholder: "Contraseña", required: "" %>
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirmar Contraseña", required: "" %>
+      </div>
+    </div>
+    <div>
+
+      <div class="field ubicacion">
+        <select disabled="true">
+          <option>Colombia</option>
+        </select>
+        <select disabled="true">
+          <option>Villavicencio</option>
+        </select>
+      </div>
+      
+      <div class="field">
+        <%= f.text_field :nombreestablecimiento, autocomplete: "off", placeholder: "Nombre Del Establecimiento", required: "" %>
+      </div>
+
+      <div class="field">
+        <%= f.text_field :barrio, autocomplete: "off", placeholder: "Barrio", required: "" %>
+      </div>
+
+      <div class="field">
+        <%= f.text_field :direccion, autocomplete: "off", placeholder: "Direccion", required: "" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+      <%= f.submit "REGUISTRARSE", class: 'btn' %>
+  </div>
+
+  <% end %>
+
+  <em><%= render "devise/shared/links" %></em>
+</section>

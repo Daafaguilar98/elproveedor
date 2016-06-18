@@ -1,0 +1,80 @@
+.principal{
+	width: 100%;
+	height: 80vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: #3C566B;
+}
+.indexheader{
+	width: 100%;
+	height: 9vh;
+	position: fixed;
+	background-color: rgba(28,106,156,0.47);
+	box-sizing: border-box;
+	padding: 0px 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.headerall{
+	position: initial !important;
+	background-color: rgba(28,106,156,1);
+
+}
+.signboard{
+	width: 100%;
+	height: 120px;
+	position: absolute;
+	top: 9vh;
+	background-color: white;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.signboard div{
+	display: flex;
+}
+.reguistro{
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.reguistrate{
+	background-color: #ff4842;
+    color: white;
+}
+.reguistrate:hover{
+	background-color: #FF6A65;
+}
+.indexsection{
+	width: 100%;
+	height: 100vh;
+	background-image: url('/assets/fondoindex.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-color: #736347;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.indexheader, .indexsection{
+	color: white;
+}
+.indexsection h1{
+	font-size: 100px;
+	text-shadow: 3px 3px rgba(0, 0, 0, 0.33);
+}
+.indexsection h4{
+	text-align: center;
+}
+.indexsection a{
+	background-color: #f1c40f;
+	border-color: #f39c12;
+	margin-top: 15px;
+	font-size: 25px;
+}

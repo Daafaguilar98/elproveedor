@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+  <title>El Proveedor</title>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,900,400italic|Lato:400,900' 
+  rel='stylesheet' type='text/css'>
+  <%= favicon_link_tag 'myicon.png'%>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <%= csrf_meta_tags %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+</head>
+<body>
+  <% if notice || alert %>
+    <div class="modal" id="modal">
+        <% if notice %>
+        <div class="flash f-notice">
+        <label><span id="cerrar">X</span></label>
+          <p class="notice"><%= notice %></p>
+        <% elsif alert %>
+        <div class="flash f-alert">
+        <label><span id="cerrar">X</span></label>
+      	 <p class="alert"><%= alert %></p>
+        <% else %>
+        <% end %>
+      </div>
+    </div>
+<% end%>
+
+<%= yield %>
+
+<script type="text/javascript">
+  $( "#user_session" ).click(function() {
+  $( "#signboard" ).slideToggle( "slow" );
+  });
+</script>
+<script type="text/javascript">
+  $( "#cerrar" ).click(function() {
+  $( "#modal" ).css( "display", "none" );
+  });
+</script>
+
+<script type="text/javascript">
+window.onscroll = function() {myFunction()};
+
+function myFunction() {
+  if(document.body.scrollTop > 30){ 
+    busqueda.classList.add('active-busqueda'); 
+  }else{
+    busqueda.classList.remove('active-busqueda'); 
+  };
+};
+
+</script>
+
+<script type="text/javascript">
+filtro.addEventListener("click", function(){ filtros.classList.toggle('active-filtro'); });
+</script>
+
+<script type="text/javascript">
+filtro.addEventListener("click", function(){ blank.classList.toggle('active-filtro'); });
+</script>
+
+</body>
+</html>
