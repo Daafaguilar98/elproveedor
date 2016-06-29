@@ -100,6 +100,9 @@ em{
 	.indexheader, .indexsection{
 		display: none;
 	}
+	.nav-lateral{
+		display: flex;
+	}
 	.signboard{
 		top: 0vh !important;
 		height: 100vh !important;

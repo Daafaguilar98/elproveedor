@@ -13,4 +13,6 @@ class User < ActiveRecord::Base
     false
   end
 
+  has_many :orders
+  
 end

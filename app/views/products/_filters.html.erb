@@ -39,3 +39,27 @@
   </div>
   <%= submit_tag("Filtrar", { :class => 'btn btn-filtrar' })%>
 <% end %>
+<header class="indexheader headerall nav-lateral">
+  <nav class="navigation">
+    <ul>
+      <li class="ingresar">
+        <% unless user_signed_in? %>
+          <%= link_to 'Ingresar Usuario', user_session_path %>
+        <% else %>
+          <%= link_to('Salir', destroy_user_session_path, :method => :delete) %>
+        <% end %>
+      </li>
+    </ul>
+</header>
+<header class="indexheader headerall nav-lateral">
+  <nav class="navigation">
+    <ul>
+      <li class="ingresar">
+        <% unless user_signed_in? %>
+          <%= link_to 'Ingresar Usuario', user_session_path %>
+        <% else %>
+          <%= link_to('Salir', destroy_user_session_path, :method => :delete) %>
+        <% end %>
+      </li>
+    </ul>
+</header>

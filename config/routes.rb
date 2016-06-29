@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  
+  post '/nuevomarca' => 'branding_products#nuevomarca'
+  post '/nuevocategoria' => 'category_products#nuevocategoria'
+
+    get '/add' => 'orders#add_product'
+    get '/orders' => 'orders#index'
+    
+  resources :orders
   resources :products
+  
   devise_for :users
   devise_scope :user do
     authenticated :user do

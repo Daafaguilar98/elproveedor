@@ -34,7 +34,13 @@
 <% end%>
 
 <%= yield %>
-
+<script type="text/javascript">
+  <% if session[:cart] %>
+    <% session[:cart].each do |key, value| %>
+        document.getElementById("<%= key %>").className += " comprar";
+    <% end %>
+  <% end %>
+</script>
 <script type="text/javascript">
   $( "#user_session" ).click(function() {
   $( "#signboard" ).slideToggle( "slow" );
@@ -47,16 +53,13 @@
 </script>
 
 <script type="text/javascript">
-window.onscroll = function() {myFunction()};
-
-function myFunction() {
-  if(document.body.scrollTop > 30){ 
+window.addEventListener("scroll", function(){
+    if(document.body.scrollTop > 80){ 
     busqueda.classList.add('active-busqueda'); 
   }else{
     busqueda.classList.remove('active-busqueda'); 
   };
-};
-
+})
 </script>
 
 <script type="text/javascript">

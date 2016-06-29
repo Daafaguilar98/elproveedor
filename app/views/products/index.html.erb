@@ -21,8 +21,15 @@
 			<%= render "filters" %>
 		</div>
 		<div class="productos">
+			<% if user_signed_in? && current_user.admin == true %>
+				<div class="product nuevo-producto">
+					<%= link_to new_product_path do %>
+						<span class="icon-circle-plus"> Nuevo Producto</span>
+					<% end %>
+				</div>
+			<% end %>
 			    <% @products.each do |product| %>
-			    <div class="product">
+			    <div class="product" id="<%= product.id %>">
 			    	<div class="foto-producto">
 			    		<img src="http://empresacolombinanathalia.weebly.com/uploads/2/8/1/4/28148007/s599866822382417415_p11_i1_w322.jpeg">
 			    	</div>
@@ -32,17 +39,25 @@
 			    			<p><%= product.marca %></p>
 			    			<h4><%= number_to_currency(product.precio, :unit => '$' ) %></h4>
 			    		</div>
-			    		<div class="pedir">
-		                  <%= form_tag({controller: "pages", action: "index"}, :method => "get", :class => 'form-pedido') do %>
-			                  <%= hidden_field_tag( :id , product.id ) %>
-			                  <%= number_field_tag :cant, :cantidad, class: "cantidad-producto", :placeholder => "und", :required => true, in: 1...100 %>
-			                  <input type="submit" value="Comprar" class="btn-pedido"></input>
-		                  <% end %>
-			    		</div>
-			    		<div style="display: none">
-			    			<%= link_to 'Edit', edit_product_path(product) %>
-			        		<%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
-			    		</div>
+			    		<% if user_signed_in? && current_user.admin == true %>
+				    		<div class="modificar">
+				    			<%= link_to edit_product_path(product) do %>
+				    				<span class="icon-tools"></span>
+				    			<% end %>
+				        		<%= link_to product, method: :delete, data: { confirm: 'Are you sure?' } do %>
+				        			<span class="icon-eliminar"></span>
+				        		<% end %>
+				    		</div>
+			    		<% else %>
+				    		<div class="pedir">
+			                  <%= form_tag({controller: "orders", action: "add_product"}, :method => "get", :class => 'form-pedido') do %>
+				                  <%= hidden_field_tag( :id , product.id ) %>
+				                  <%= number_field_tag :cant, :cantidad, class: "cantidad-producto", :placeholder => "und", :required => true, in: 1...100 %>
+				                  <input type="submit" value="Comprar" class="btn-pedido"></input>
+			                  <% end %>
+				    		</div>
+				    		<div class="comprado" style="display: none;"><h2>COMPRADO</h2></div>
+			    		<% end %>
 			    	</div>
 			    </div>
 			    <% end %>

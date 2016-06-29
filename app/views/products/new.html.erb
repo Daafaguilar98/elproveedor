@@ -1,7 +1,24 @@
 <section class="nuevo-producto">
+
+	<div class="add-producto">
+		<%= form_tag(controller: "category_products", action: "nuevocategoria", method: "post") do %>
+		<div class="field">
+		  <%= text_field_tag(:categoria, "", placeholder: "Nueva Categoria",required: "")  %>
+		</div>
+		  <%= submit_tag("Crear", class: 'btn') %>
+		<% end %>
+		<%= form_tag(controller: "branding_products", action: "nuevomarca", method: "post") do %>
+		<div class="field">
+		  <%= text_field_tag(:marca, "", placeholder: "Nueva Marca",required: "" ) %>
+		</div>
+		  <%= submit_tag("Crear", class: 'btn') %>
+		<% end %>
+	</div>
+
 <h1>NUEVO PRODUCTO</h1>
 
-<%= render 'form' %>
+	<%= render 'form' %>
 
 <em><%= link_to 'Ver Todos los productos', products_path %></em>
+
 </section>

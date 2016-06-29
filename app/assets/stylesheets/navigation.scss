@@ -1,5 +1,18 @@
 .navigation li{
 	list-style: none;
+	margin: 0px 10px;
+	display: flex;
+    align-items: center;
+}
+.navigation ul{
+	display: flex;
+}
+.navigation a{
+	display: flex;
+	align-items: center;
+}
+.navigation a span{
+	margin: 0px 5px;
 }
 .ingresar{
 	border: 1px solid white;
@@ -8,4 +21,18 @@
 .ingresar a{
 	padding: 3px 8px 5px 8px;
 	text-align: center;
+}
+.triangulo_izq{
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-right: 10px solid #0f3d5a;
+    border-bottom: 5px solid transparent;
+}
+.count{
+	background: #0f3d5a;
+    min-width: 17px;
+    text-align: center;
+    line-height: 1.5;
+    border-radius: 1.5px;
 }

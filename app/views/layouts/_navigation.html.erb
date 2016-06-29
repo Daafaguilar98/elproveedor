@@ -4,6 +4,23 @@
   </figure>
   <nav class="navigation">
     <ul>
+      <li>
+        <% if session[:cart] %>
+          <%= link_to orders_path do %>
+            <span class="icon-shopping-cart"></span>
+            <p>Pedido</p>
+            <div class="triangulo_izq"></div>
+            <div class="count">
+              <strong><%= cantidad = session[:cart].count %></strong>
+            </div>
+          <% end %>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to products_path do %>
+          <span class="icon-shop"></span><p> Productos</p>
+        <% end %>
+      </li>
       <li class="ingresar">
       	<% unless user_signed_in? %>
         	<%= link_to 'Ingresar Usuario', user_session_path %>

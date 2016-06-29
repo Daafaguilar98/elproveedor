@@ -1,10 +1,32 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :permisos_admin, only: [:new, :create, :edit, :update, :destroy]
+    
 
+  def permisos_admin
+    unless user_signed_in? and current_user.admin == true
+      redirect_to 'products'
+    end
+  end
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+       @marca = params[:marca]
+    @categoria = params[:categoria]
+    @ask = params[:ask]
+    if @ask
+      @products = Product.where("nombre LIKE ?", "%#{@ask}%")
+      if @products.presence
+        @products
+      else
+        flash[:notice] = "No se encontro el producto por la referencia #{@ask}."
+        redirect_to '/products'
+      end
+    elsif @marca or @categoria
+      @products = Product.where( "marca = '#{@marca}' OR categoria = '#{@categoria}'" )
+    else
+      @products = Product.all
+    end
   end
 
   # GET /products/1
@@ -28,7 +50,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.html { redirect_to products_path, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }

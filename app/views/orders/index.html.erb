@@ -1,0 +1,51 @@
+<nav>
+  <%= render 'layouts/navigation' %>
+</nav>
+<div class="orders">
+	<div class="order">
+		<div class="sub-header">
+			<div><h2><strong>INVOICE</strong></h2></div>
+			<ul>
+				<li><strong>Cliente: </strong>Cliente Ocacional</li>
+				<li><strong>Fecha: </strong><%= Time.now %></li>
+			</ul>
+		</div>
+		<table>
+				<tr class="td-head">
+					<td>Articulos</td>
+					<td>Cantidad</td>
+					<td class="none">Precio Unitario</td>
+					<td class="important-c">Total</td>
+				</tr>
+				<% total = 0 %>
+			<% @cart.each do |id, cantidad| %>
+				<tr class="order-list-product">
+					<% product = Product.find_by_id(id) %>
+					<td><%= product.nombre %></td>
+					<td><%= cantidad %></td>
+					<td class="none"><%= number_to_currency(product.precio, :unit => '$' ) %></td>
+					<td class="important"><%= number_to_currency(product.precio * cantidad.to_i, :unit => '$' ) %></td>
+					<td></td>
+					<% total += (product.precio * cantidad.to_i) %>
+				</tr>
+			<% end %>
+					<% iva = total.to_f * 0.16 %>
+				<tr>
+					<td colspan="2" class="colspan"></td>
+					<td>Subtotal</td>
+					<td class="important-c"><%= number_to_currency((total - iva).to_i, :unit => '$' ) %></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="colspan"></td>
+					<td>Iva (16%)</td>
+					<td class="important-c"><%= number_to_currency(iva.to_i, :unit => '$' ) %></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="colspan"></td>
+					<td>Total</td>
+					<td class="important-c"><%= number_to_currency(total, :unit => '$' ) %></td>
+				</tr>
+		</table>
+		<%= link_to 'Comprar', new_order_path, class: 'btn' %>
+	</div>
+</div>
