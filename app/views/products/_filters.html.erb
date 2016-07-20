@@ -1,41 +1,23 @@
 <%= form_tag("/products", method: "get") do %>
         <h3>Categorias</h3>
   <div>
-          <%= label_tag(:categoria_chocolate, "chocolate", class: 'radio') do %>
-            <%= radio_button_tag(:categoria, "chocolate", id: 'radio2') %>
-            <span class="outer"><span class="inner"></span></span>Chocolate
+        <% @category.each do |categoria| %>
+          <% cat = categoria.categoria %>
+          <%= label_tag("categoria_#{cat}", cat, class: 'radio') do %>
+            <%= radio_button_tag(:categoria, cat, id: 'radio2') %>
+            <span class="outer"><span class="inner"></span></span><%= cat %>
           <% end%>
-          <%= label_tag(:categoria_dulces, "dulces", class: 'radio') do %>
-            <%= radio_button_tag(:categoria, "dulces", id: 'radio2') %>
-            <span class="outer"><span class="inner"></span></span>Dulces
-          <% end%>
-          <%= label_tag(:categoria_lacteos, "lacteos", class: 'radio') do %>
-            <%= radio_button_tag(:categoria, "lacteos", id: 'radio2') %>
-            <span class="outer"><span class="inner"></span></span>Lacteos
-          <% end%>
-          <%= label_tag(:categoria_galletas, "galletas", class: 'radio') do %>
-            <%= radio_button_tag(:categoria, "galletas", id: 'radio2') %>
-            <span class="outer"><span class="inner"></span></span>Galletas
-          <% end%>
+        <% end %>
   </div>
         <h3>Marcas</h3>
   <div>
-          <%= label_tag(:marca_aldor, "aldor", class: 'radio') do %>
-            <%= radio_button_tag(:marca, "aldor", id: 'radio2') %>
-            <span class="outer"><span class="inner"></span></span>Aldor
+        <% @branding.each do |marca| %>
+          <% mar = marca.marca %>
+          <%= label_tag("marca_#{mar}", mar, class: 'radio') do %>
+            <%= radio_button_tag(:marca, mar, id: 'radio2') %>
+            <span class="outer"><span class="inner"></span></span><%= mar%>
           <% end%>
-          <%= label_tag(:marca_colombina, "colombina", class: 'radio') do %>
-            <%= radio_button_tag(:marca, "colombina", id: 'radio2') %>
-            <span class="outer"><span class="inner"></span></span>Colombina
-          <% end%>
-          <%= label_tag(:marca_super, "super", class: 'radio') do %>
-            <%= radio_button_tag(:marca, "super", id: 'radio2') %>
-            <span class="outer"><span class="inner"></span></span>Super
-          <% end%>
-          <%= label_tag(:marca_super, "super", class: 'radio') do %>
-            <%= radio_button_tag(:marca, "super", id: 'radio2') %>
-            <span class="outer"><span class="inner"></span></span>Confitecol
-          <% end%>
+        <% end %>
   </div>
   <%= submit_tag("Filtrar", { :class => 'btn btn-filtrar' })%>
 <% end %>

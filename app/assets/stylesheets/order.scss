@@ -35,3 +35,25 @@ table{
 .order-list-product td:first-child{
 	text-align: left;
 }
+
+.facturas{
+	width: 100%;
+	min-height: 100vh;
+	background-color: #EEE;
+	display: flex;
+	flex-direction: column;
+}
+.card{
+	width: 250px;
+	height: 100px;
+	background: white;
+	margin: 10px;
+}
+.visto{
+	color: green;
+	border: 1px solid green;
+}
+.ok{
+	background-color: #3bb53b;
+	color: white;
+}

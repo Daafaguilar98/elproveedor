@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
     get '/add' => 'orders#add_product'
     get '/orders' => 'orders#index'
+    get '/facturas' => 'orders#invoices'
+    get '/validate' => 'orders#validate'
     
   resources :orders
   resources :products

@@ -18,21 +18,14 @@
 	margin: 0px;
 	font-family: 'Lato', sans-serif;
 }
-.modal{
-	width: 100%;
-	height: 100vh;
-	background-color: rgba(0, 0, 0, 0.69);
-	position: absolute;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	z-index: 1;
-}
 .flash{
 	width: 400px;
 	height: 150px;
-	background-color: white;
-	color: black;
+	left: 50%;
+    margin-left: -200px;
+    margin-top: 20px;
+    z-index: 2; 
+	position: absolute;
 	text-align: center;
 }
 .f-notice{
@@ -92,8 +85,10 @@ em{
 
 }
 
-@media screen and (max-width: 450px){
-
+@media screen and (max-width: 480px){
+	.none{
+		display: none;
+	}
 }
 
 @media screen and (max-width: 600px){

@@ -1,6 +1,13 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:new]
+  before_action :permisos_admin, only: [:show, :invoices, :validate]
 
+  def permisos_admin
+    unless user_signed_in? and current_user.admin == true
+      redirect_to 'products'
+    end
+  end
+  
   def add_product
     $id = params[:id]
     $cantidad = params[:cant]
@@ -28,6 +35,11 @@ class OrdersController < ApplicationController
     end
   end
 
+  def show
+    $id = params[:id]
+    @order = Order.find_by_id($id)
+  end
+
   # POST /orders
   # POST /orders.json
   def new
@@ -35,5 +47,15 @@ class OrdersController < ApplicationController
     session[:cart] = {}
     flash[:notice] = "Su pedido fue exitoso, estara en la puerta de su casa en menos de 72 horas"
     redirect_to '/products'
+  end
+
+  def invoices
+    @facturas = Order.all
+  end
+
+  def validate
+    $id = params[:id]
+    @order = Order.find_by_id($id).update(visto: true)
+    redirect_to '/facturas'
   end
 end

@@ -1,0 +1,21 @@
+<nav>
+  <%= render 'layouts/navigation' %>
+</nav>
+<section class="facturas">
+	<% @facturas.each do |factura| %>
+		<% @id = factura.user_id %>
+		<% user = User.find_by_id(@id) %>
+			<div class="card<% if factura.visto == true %> visto<% end %>">
+				<a href="<%= "orders/#{factura.id}" %>">
+				<span class="icon-archive" style="font-size: 50px"></span>
+				<%= factura.id %>
+				<%= user.nombre %>
+				<%= user.numeroidentificacion %>
+				</a>
+				<%= form_tag({controller: "orders", action: "validate"}, :method => "get") do %>
+				        <%= hidden_field_tag( :id , factura.id ) %>
+				        <input type="submit" value="OK!" class="btn ok"></input>
+			    <% end %>
+			</div>
+	<% end %>
+</section>

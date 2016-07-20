@@ -11,9 +11,10 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-       @marca = params[:marca]
+    @marca = params[:marca]
     @categoria = params[:categoria]
     @ask = params[:ask]
+
     if @ask
       @products = Product.where("nombre LIKE ?", "%#{@ask}%")
       if @products.presence
@@ -27,6 +28,8 @@ class ProductsController < ApplicationController
     else
       @products = Product.all
     end
+    @category = CategoryProduct.all
+    @branding = BrandingProduct.all
   end
 
   # GET /products/1
@@ -91,6 +94,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:codigo, :nombre, :categoria, :marca, :precio)
+      params.require(:product).permit(:codigo, :nombre, :categoria, :marca, :precio, :foto)
     end
 end

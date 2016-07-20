@@ -4,7 +4,7 @@
 <div class="orders">
 	<div class="order">
 		<div class="sub-header">
-			<div><h2><strong>INVOICE</strong></h2></div>
+			<div><h2><strong>Orden de Pedido</strong></h2></div>
 			<ul>
 				<li><strong>Cliente: </strong>Cliente Ocacional</li>
 				<li><strong>Fecha: </strong><%= Time.now %></li>
@@ -31,17 +31,17 @@
 			<% end %>
 					<% iva = total.to_f * 0.16 %>
 				<tr>
-					<td colspan="2" class="colspan"></td>
+					<td id="myTd" colspan="2" class="colspan"></td>
 					<td>Subtotal</td>
 					<td class="important-c"><%= number_to_currency((total - iva).to_i, :unit => '$' ) %></td>
 				</tr>
 				<tr>
-					<td colspan="2" class="colspan"></td>
+					<td id="myTd1" colspan="2" class="colspan"></td>
 					<td>Iva (16%)</td>
 					<td class="important-c"><%= number_to_currency(iva.to_i, :unit => '$' ) %></td>
 				</tr>
 				<tr>
-					<td colspan="2" class="colspan"></td>
+					<td id="myTd2" colspan="2" class="colspan"></td>
 					<td>Total</td>
 					<td class="important-c"><%= number_to_currency(total, :unit => '$' ) %></td>
 				</tr>

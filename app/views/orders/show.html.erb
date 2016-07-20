@@ -1,0 +1,11 @@
+<% total = 0 %>
+<% @order.productos.each do |id, cantidad| %>
+	<tr class="order-list-product">
+		<% product = Product.find_by_id(id) %>
+			<td><%= product.codigo %></td>
+			<td><%= cantidad %></td>
+			<td class="none"><%= number_to_currency(product.precio, :unit => '$' ) %></td>
+			<td class="important"><%= number_to_currency(product.precio * cantidad.to_i, :unit => '$' ) %></td>
+		<% total += (product.precio * cantidad.to_i) %>
+	</tr>
+<% end %>
