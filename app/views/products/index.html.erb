@@ -31,7 +31,7 @@
 			    <% @products.each do |product| %>
 			    <div class="product" id="<%= product.id %>">
 			    	<div class="foto-producto">
-			    		<img src="http://empresacolombinanathalia.weebly.com/uploads/2/8/1/4/28148007/s599866822382417415_p11_i1_w322.jpeg">
+			    		<%= image_tag product.foto.url() %>
 			    	</div>
 			    	<div class="action-producto">
 			    		<div class="inf-producto">
