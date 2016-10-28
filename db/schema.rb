@@ -28,14 +28,6 @@ ActiveRecord::Schema.define(version: 20160712024130) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "comidas", force: :cascade do |t|
-    t.string   "tipo"
-    t.text     "descripcion"
-    t.integer  "cantidad"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "orders", force: :cascade do |t|
     t.string   "productos"
     t.datetime "created_at", null: false

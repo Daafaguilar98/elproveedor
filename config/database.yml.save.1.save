@@ -23,6 +23,5 @@ production:
   <<: *default
   database: elproveedor_production
   username: rails
-  password: mdfgPihLkT
-
+  password: sudo -u postgres pg_ctlcluster 9.3 main restart
 
