@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+  <title>El Proveedor</title>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,900,400italic|Lato:400,900' 
+  rel='stylesheet' type='text/css'>
+  <%= favicon_link_tag 'myicon.png'%>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <%= csrf_meta_tags %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+</head>
+<body>
+<div><div>
+  <% if notice || alert %>
+        <% if notice %>
+        <div class="flash f-notice">
+        <label><span id="cerrar">X</span></label>
+          <p class="notice"><%= notice %></p>
+        <% elsif alert %>
+        <div class="flash f-alert">
+        <label><span id="cerrar">X</span></label>
+      	 <p class="alert"><%= alert %></p>
+        <% else %>
+        <% end %>
+      </div>
+<% end%>
+
+<%= yield %>
+<script type="text/javascript">
+  <% if session[:cart] %>
+    <% session[:cart].each do |key, value| %>
+        document.getElementById("<%= key %>").className += " comprar";
+    <% end %>
+  <% end %>
+</script>
+<script type="text/javascript">
+  $( "#user_session" ).click(function() {
+  $( "#signboard" ).slideToggle( "slow" );
+  });
+</script>
+<script type="text/javascript">
+  $( "#cerrar" ).click(function() {
+  $( ".flash" ).css( "display", "none" );
+  });
+</script>
+
+<script type="text/javascript">
+window.addEventListener("scroll", function(){
+    if(document.body.scrollTop > 80){ 
+    busqueda.classList.add('active-busqueda'); 
+  }else{
+    busqueda.classList.remove('active-busqueda'); 
+  };
+})
+</script>
+
+<script type="text/javascript">
+filtro.addEventListener("click", function(){ filtros.classList.toggle('active-filtro'); });
+</script>
+
+<script type="text/javascript">
+filtro.addEventListener("click", function(){ blank.classList.toggle('active-filtro'); });
+</script>
+<script type="text/javascript">
+window.addEventListener("resize", function(){
+var mediaquery = window.matchMedia("(max-width: 480px)");
+  if (mediaquery.matches) {
+      document.getElementById("myTd").colSpan = "1";
+      document.getElementById("myTd1").colSpan = "1";
+      document.getElementById("myTd2").colSpan = "1";
+  } else {
+    document.getElementById("myTd").colSpan = "2";
+      document.getElementById("myTd1").colSpan = "2";
+      document.getElementById("myTd2").colSpan = "2";
+  }
+});
+</script>
+
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/5801305c277fb7280d9b250e/default';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+
+</body>
+</html>
