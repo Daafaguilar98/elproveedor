@@ -19,7 +19,7 @@
     <%= f.text_field :nombre, placeholder: "Nombre del producto",required: "" %>
   </div>
   <div class="field">
-    <%= f.file_field :foto %>
+   <!-- <%= f.text_field :url_photo, placeholder: "url del producto",required: "" %>-->
   </div>
   <div class="field">
     <%= select_tag "categoria", options_from_collection_for_select(CategoryProduct.all, "categoria", "categoria"), prompt: "Categoria" %>
